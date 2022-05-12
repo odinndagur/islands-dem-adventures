@@ -21,7 +21,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [12.x]#, 14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -32,10 +32,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     #- run: npm ci
-    - run: npm install
-    - run: npm run build --if-present
     - run: git config --global user.email "odinnd@gmail.com"
     - run: git config --global user.name "Óðinn Dagur Bjarnason"
+    - run: npm install
+    - run: npm run build --if-present
     - run: git commit -am lol
     - run: git push
     #- run: npm test
+#https://medium.com/swlh/auto-deploy-vue-js-to-github-pages-using-actions-723a2206e4d3
